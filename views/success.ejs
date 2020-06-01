@@ -1,0 +1,43 @@
+<%- include ("partials/top") %>
+
+    <div class="alert alert-success">
+        <br> Registration Successfull
+        <br>
+    </div>
+
+    <br>
+    <hr><br>
+
+    <div class="container">
+        <img src="<%=registration.id_card%>" alt="id_card" height="250px" width="200px">
+        <h3>Number</h3>
+        <h4>
+            <%=registration.number%>
+        </h4>
+        <h3>Name</h3>
+        <h4>
+            <%=registration.name%>
+        </h4>
+        <h3>Phone</h3>
+        <h4>
+            <%=registration.phone%>
+        </h4>
+        <h3>Email</h3>
+        <h4>
+            <%=registration.email%>
+        </h4>
+        <h3>Type</h3>
+        <h4>
+            <%=registration.type%>
+        </h4>
+        <h3>Tickets</h3>
+        <h4>
+            <%=registration.tickets%>
+        </h4>
+
+        <h3>Date</h3>
+        <h4>
+            <%=registration.date%>
+        </h4>
+    </div>
+    <%- include ("partials/bottom") %>

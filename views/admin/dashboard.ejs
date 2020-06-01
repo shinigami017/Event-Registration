@@ -1,0 +1,24 @@
+<%- include ("../partials/top") %>
+    <h1>Admin Dashboard</h1>
+    <br>
+    <hr><br>
+    <h4>Chart detailing count of Registration types(Self/Group/Coorporate/Others)</h4>
+    <br>
+    <hr><br>
+    <h4>List of all Registrations with hyplerlinks at Registration No.</h4>
+    <div class="container">
+        <%registrations.forEach(function(registration){%>
+            <div class="container d-flex bg-light justify-content-between">
+                <a href="/users/<%=registration._id%>/show">
+                    <%=registration.number%>
+                </a> :
+                <p>
+                    <%=registration.name%>
+                </p> :
+                <p><em><%=registration.date%></em></p>
+            </div>
+            <%})%>
+
+    </div>
+
+    <%- include ("../partials/bottom") %>

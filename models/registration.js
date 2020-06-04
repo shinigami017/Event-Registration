@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 function getDefaultDate() {
     let today = new Date();
@@ -9,7 +9,7 @@ function getDefaultDate() {
     return today;
 }
 
-var registrationSchema = new mongoose.Schema({
+const registrationSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true

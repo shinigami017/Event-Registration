@@ -1,15 +1,15 @@
-var express = require("express"),
+const express = require("express"),
     router = express.Router(),
     bcrypt = require("bcryptjs"),
     jwt = require("jsonwebtoken"),
     passport = require("passport");
 
 // Load User Model
-var User = require("../models/user");
+const User = require("../models/user");
 
 // Register User
 router.post("/", function(request, response) {
-    var { username, email, password, password2 } = request.body;
+    let { username, email, password, password2 } = request.body;
 
     if (!username) {
         return response.status(400).json({ message: "Please enter your name" });
@@ -39,7 +39,7 @@ router.post("/", function(request, response) {
         if (user) {
             response.status(400).json({ message: "Username not available" });
         } else {
-            var newUser = new User({ username, email, password });
+            let newUser = new User({ username, email, password });
             bcrypt.genSalt(10, function(error, salt) {
                 bcrypt.hash(newUser.password, salt, function(error, hash) {
                     if (error) throw error;

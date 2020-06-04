@@ -1,4 +1,4 @@
-var express = require("express"),
+const express = require("express"),
     path = require("path"),
     passport = require("passport"),
     bodyParser = require("body-parser"),
@@ -6,7 +6,7 @@ var express = require("express"),
     mongoose = require("mongoose");
 
 // Init App
-var app = express();
+const app = express();
 
 // Connect to MongoDB
 const Connection_URI = process.env.MONGODB_URI || "mongodb+srv://shinigami017newuser:newuser1234@shinigami017-azees.mongodb.net/EventRegistration?retryWrites=true&w=majority";

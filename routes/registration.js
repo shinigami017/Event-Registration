@@ -2,11 +2,11 @@ const express = require("express");
 const multer = require("multer");
 const router = express.Router();
 
-var Registration = require("../models/registration");
-var isLoggedIn = require("../config/auth");
+const Registration = require("../models/registration");
+const isLoggedIn = require("../config/auth");
 
 // Set Storage engine
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, "cards");
     },
@@ -28,7 +28,7 @@ const fileFilter = (req, file, cb) => {
 };
 
 //Init upload
-var upload = multer({
+const upload = multer({
     storage: storage,
     limits: {
         fileSize: 1024 * 1024 * 10 //max size of 10mb allowed for file uploaded
@@ -37,8 +37,8 @@ var upload = multer({
 });
 
 function generateRegistrationNumber() {
-    var generate = new Date().toISOString();
-    var numbers = generate.match(/\d+/g).map(Number);
+    let generate = new Date().toISOString();
+    let numbers = generate.match(/\d+/g).map(Number);
     return numbers.join("");
 }
 
@@ -46,8 +46,8 @@ function generateRegistrationNumber() {
 
 // Add new registration
 router.post("/", upload.single("idCard"), function(request, response, next) {
-    var { name, phone, email, type, tickets } = request.body;
-    var number = generateRegistrationNumber();
+    let { name, phone, email, type, tickets } = request.body;
+    let number = generateRegistrationNumber();
     tickets = (type == "Self") ? "1" : tickets;
     const file = request.file;
     if (!file) {
@@ -56,8 +56,8 @@ router.post("/", upload.single("idCard"), function(request, response, next) {
         // return next(error);
         return response.json({ error: error });
     }
-    var id_card = "\\" + file.path;
-    var registration = new Registration({ name, phone, email, id_card, type, tickets, number });
+    let id_card = "\\" + file.path;
+    let registration = new Registration({ name, phone, email, id_card, type, tickets, number });
     registration.save(function(error, newRegistration) {
         if (error) {
             return response.json({ error: error });

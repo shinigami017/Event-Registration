@@ -3,8 +3,7 @@ var express = require("express"),
 
 // Get Landing Page
 router.get("/", function(request, response) {
-    response.render("index");
+    response.send("homepage");
 });
-
 
 module.exports = router;

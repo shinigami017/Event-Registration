@@ -3,10 +3,14 @@ const express = require("express"),
     passport = require("passport"),
     bodyParser = require("body-parser"),
     cookieParser = require("cookie-parser"),
+    cors = require("cors"),
     mongoose = require("mongoose");
 
 // Init App
 const app = express();
+
+// Cors middleware
+app.use(cors());
 
 // Connect to MongoDB
 const Connection_URI = process.env.MONGODB_URI || "mongodb+srv://shinigami017newuser:newuser1234@shinigami017-azees.mongodb.net/EventRegistration?retryWrites=true&w=majority";
